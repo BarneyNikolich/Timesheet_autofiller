@@ -1,7 +1,69 @@
 @(message: String)
 
-@main("Welcome to Play") {
+@main("Auto timesheet filler") {
 
-    @play20.welcome(message)
+<table width="1000" border="1" cellspacing="0" cellpadding='1' align="center">
+    <thead>
+    <td colspan="5" align="center" height="20">Week Ending: 26/11/2015</td>
+    <tr height="30">
+        <th>MONDAY</th>
+        <th>TUESDAY</th>
+        <th>WEDNESDAY</th>
+        <th>THURSDAY</th>
+        <th>FRIDAY</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <form>
+        <tr height="50" align="center">
+            <td>
+                <select>
+                    <option value="full">FULL</option>
+                    <option value="half">HALF</option>
+                    <option value="off">OFF</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option value="full">FULL</option>
+                    <option value="half">HALF</option>
+                    <option value="off">OFF</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option value="full">FULL</option>
+                    <option value="half">HALF</option>
+                    <option value="off">OFF</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option value="full">FULL</option>
+                    <option value="half">HALF</option>
+                    <option value="off">OFF</option>
+                </select>
+            </td>
+            <td>
+                <select>
+                    <option value="full">FULL</option>
+                    <option value="half">HALF</option>
+                    <option value="off">OFF</option>
+                </select>
+            </td>
+        </tr>
+    </form>
+
+    </tbody>
+
+    <tfoot >
+    <td colspan="5" align="center" height="20">
+        <input type="submit" value="Submit">
+    </td>
+    </tfoot>
+
+</table>
+
 
 }
