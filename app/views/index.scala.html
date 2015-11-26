@@ -1,59 +1,66 @@
-@(message: String)
+@(message: String, selectOptions: List[String], days: List[String], myForm: Form[models.dto.MyFormDto])(implicit messages: Messages)
+@import helper._
 
 @main("Auto timesheet filler") {
 
-<table width="1000" border="1" cellspacing="0" cellpadding='1' align="center">
+
+  <table width="1000" border="1" cellspacing="0" cellpadding='1' align="center">
     <thead>
     <td colspan="5" align="center" height="20">Week Ending: 26/11/2015</td>
     <tr height="30">
-        <th>MONDAY</th>
-        <th>TUESDAY</th>
-        <th>WEDNESDAY</th>
-        <th>THURSDAY</th>
-        <th>FRIDAY</th>
+        @for(day <- days){
+            <th>@day</th>
+        }
     </tr>
     </thead>
 
     <tbody>
-    <form>
+    @form(action = controllers.routes.Application.processForm()) {
         <tr height="50" align="center">
             <td>
-                <select>
-                    <option value="full">FULL</option>
-                    <option value="half">HALF</option>
-                    <option value="off">OFF</option>
-                </select>
+
+                @select(
+                  myForm("MondaySelect"),
+                  options(selectOptions),
+                  '_label -> "MondaySelect", '_default -> "-- Option --"
+                )
+
+                <!--<select>-->
+                    <!--<option value="full">FULL</option>-->
+                    <!--<option value="half">HALF</option>-->
+                    <!--<option value="off">OFF</option>-->
+                <!--</select>-->
             </td>
             <td>
-                <select>
-                    <option value="full">FULL</option>
-                    <option value="half">HALF</option>
-                    <option value="off">OFF</option>
-                </select>
+                @select(
+                myForm(""),
+                options(selectOptions),
+                '_label -> "MondaySelect", '_default -> "-- Option --"
+                )
             </td>
             <td>
-                <select>
-                    <option value="full">FULL</option>
-                    <option value="half">HALF</option>
-                    <option value="off">OFF</option>
-                </select>
+                @select(
+                myForm(""),
+                options(selectOptions),
+                '_label -> "MondaySelect", '_default -> "-- Option --"
+                )
             </td>
             <td>
-                <select>
-                    <option value="full">FULL</option>
-                    <option value="half">HALF</option>
-                    <option value="off">OFF</option>
-                </select>
+                @select(
+                myForm(""),
+                options(selectOptions),
+                '_label -> "MondaySelect", '_default -> "-- Option --"
+                )
             </td>
             <td>
-                <select>
-                    <option value="full">FULL</option>
-                    <option value="half">HALF</option>
-                    <option value="off">OFF</option>
-                </select>
+                @select(
+                myForm(""),
+                options(selectOptions),
+                '_label -> "MondaySelect", '_default -> "-- Option --"
+                )
             </td>
         </tr>
-    </form>
+    }
 
     </tbody>
 
@@ -63,7 +70,7 @@
     </td>
     </tfoot>
 
-</table>
+  </table>
 
 
 }
