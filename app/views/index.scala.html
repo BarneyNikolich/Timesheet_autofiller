@@ -17,52 +17,16 @@
     <tbody>
     @form(action = controllers.routes.Application.processForm()) {
         <tr height="50" align="center">
-
-
-            <td>
-
-                @select(
-                  myForm("MondaySelect"),
-                  options(selectOptions),
-                  '_label -> "MondaySelect", '_default -> "-- Option --"
-                )
-
-                <!--<select>-->
-                    <!--<option value="full">FULL</option>-->
-                    <!--<option value="half">HALF</option>-->
-                    <!--<option value="off">OFF</option>-->
-                <!--</select>-->
-            </td>
-            <td>
-                @select(
-                myForm(""),
-                options(selectOptions),
-                '_label -> "MondaySelect", '_default -> "-- Option --"
-                )
-            </td>
-            <td>
-                @select(
-                myForm(""),
-                options(selectOptions),
-                '_label -> "MondaySelect", '_default -> "-- Option --"
-                )
-            </td>
-            <td>
-                @select(
-                myForm(""),
-                options(selectOptions),
-                '_label -> "MondaySelect", '_default -> "-- Option --"
-                )
-            </td>
-            <td>
-                @select(
-                myForm(""),
-                options(selectOptions),
-                '_label -> "MondaySelect", '_default -> "-- Option --"
-                )
-            </td>
+            @for(day <- days){
+                <td>
+                    @select(
+                    myForm("Buttons"),
+                    options(selectOptions),
+                    '_label -> "", '_default -> "-- Option --"
+                    )
+                </td>
+            }
         </tr>
-    }
 
     </tbody>
 
@@ -70,6 +34,7 @@
     <td colspan="5" align="center" height="20">
         <input type="submit" value="Submit">
     </td>
+    }
     </tfoot>
 
   </table>
