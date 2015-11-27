@@ -19,7 +19,7 @@ class Application extends Controller {
   }
 
   def processForm = Action {
-    Ok("Thanks")
+    Ok("Thanks mate")
   }
 
 
