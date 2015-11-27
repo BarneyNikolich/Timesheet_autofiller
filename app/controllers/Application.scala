@@ -18,9 +18,18 @@ class Application extends Controller {
     Ok(views.html.index("Your new application is ready.", SelectOptions, Days, myForm))
   }
 
-  def processForm = Action {
+  def processForm = Action {  // implicit request =>
+//    MyFormDto.form.bindFromRequest.fold(
+//
+//
+//    )
+
+
+
     Ok("Thanks mate")
   }
+
+
 
 
 
@@ -30,7 +39,7 @@ class Application extends Controller {
 //  val Hello = Form(
 //    "mon" -> text
 //  )
-
+//
 //  def Hello = Action { implicit request =>
 //    Hello.bindFromRequest.fold(
 //      errors => {
