@@ -1,4 +1,4 @@
-@(message: String, selectOptions: List[String], days: List[String], myForm: Form[models.dto.MyFormDto])(implicit messages: Messages)
+@(message: String, selectOptions: Map[String,String], days: List[(String,String)], myForm: Form[models.dto.MyFormDto])(implicit messages: Messages)
 @import helper._
 
 @main("Auto timesheet filler") {
@@ -9,7 +9,7 @@
     <td colspan="5" align="center" height="20">Week Ending: 26/11/2015</td>
     <tr height="30">
         @for(day <- days){
-            <th>@day</th>
+            <th>@day._1</th>
         }
     </tr>
     </thead>
@@ -20,9 +20,9 @@
             @for(day <- days){
                 <td>
                     @select(
-                    myForm("Buttons"),
-                    options(selectOptions),
-                    '_label -> "", '_default -> "-- Option --"
+                      myForm(day._2),
+                      options(selectOptions),
+                      '_label -> ""
                     )
                 </td>
             }

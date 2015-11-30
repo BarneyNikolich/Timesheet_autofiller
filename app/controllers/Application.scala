@@ -8,8 +8,8 @@ import play.api.i18n.Messages.Implicits._
 
 class Application extends Controller {
 
-  val Days: List[String] = List("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
-  val SelectOptions: List[String] = List("Full", "Half", "Off")
+  val Days = List("monday", "tuesday", "wednesday", "thursday", "friday").map(d => (d.capitalize, d))
+  val SelectOptions = List("Full", "Half", "Off").map( x => (x,x) ).toMap
   
   def index = Action {
 
@@ -18,15 +18,20 @@ class Application extends Controller {
     Ok(views.html.index("Your new application is ready.", SelectOptions, Days, myForm))
   }
 
-  def processForm = Action {  // implicit request =>
-//    MyFormDto.form.bindFromRequest.fold(
-//
-//
-//    )
+  def processForm = Action {   implicit request =>
+    MyFormDto.form.bindFromRequest.fold(
+      formWithErrors => {
+        BadRequest(views.html.index("Your new application is ready.", SelectOptions, Days, formWithErrors))
+      },
+      myFormDto => {
 
 
 
-    Ok("Thanks mate")
+
+        Ok(myFormDto.toString)
+
+      }
+    )
   }
 
 
@@ -46,6 +51,7 @@ class Application extends Controller {
 //        BadRequest(views.html.index(errors))
 //      },
 //      name => {
+
 //        OK(views.html.sayHello(name))
 //      }
 //    )
