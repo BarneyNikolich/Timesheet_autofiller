@@ -24,10 +24,6 @@ class Application extends Controller {
         BadRequest(views.html.index("Your new application is ready.", SelectOptions, Days, formWithErrors))
       },
       myFormDto => {
-
-
-
-
         Ok(myFormDto.toString)
 
       }

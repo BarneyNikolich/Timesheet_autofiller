@@ -9,7 +9,7 @@ object MyFormDto {
 
   val form = Form(
     mapping(
-      "monday" -> text,
+      "monday" -> text.verifying("Monday must be a full day", e => e.equals("Full")),
       "tuesday" -> text,
       "wednesday" -> text,
       "thursday" -> text,
