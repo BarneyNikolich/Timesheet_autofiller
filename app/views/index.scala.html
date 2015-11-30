@@ -1,4 +1,4 @@
-@(message: String, selectOptions: Map[String,String], days: List[(String,String)], myForm: Form[models.dto.MyFormDto])(implicit messages: Messages)
+@(selectOptions: Map[String,String], days: List[(String,String)], myForm: Form[models.dto.MyFormDto])(implicit messages: Messages)
 @import helper._
 
 @main("Auto timesheet filler") {
@@ -22,7 +22,7 @@
                     @select(
                       myForm(day._2),
                       options(selectOptions),
-                      '_label -> ""
+                      '_label -> "Select"
                     )
                 </td>
             }
@@ -32,7 +32,7 @@
 
     <tfoot >
     <td colspan="5" align="center" height="20">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="btn btn-primary">
     </td>
     }
     </tfoot>

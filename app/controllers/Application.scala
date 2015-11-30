@@ -9,19 +9,20 @@ import play.api.i18n.Messages.Implicits._
 class Application extends Controller {
 
   val Days = List("monday", "tuesday", "wednesday", "thursday", "friday").map(d => (d.capitalize, d))
-  val SelectOptions = List("Full", "Half", "Off").map( x => (x,x) ).toMap
-  
+  val SelectOptions = List("-- select --", "Full", "Half", "Off").map( x => (x,x) ).toMap
+
+
   def index = Action {
 
-    val myForm = MyFormDto.form
+    val myForm = MyFormDto.form //Bring the form into scope!
 
-    Ok(views.html.index("Your new application is ready.", SelectOptions, Days, myForm))
+    Ok(views.html.index(SelectOptions, Days, myForm))
   }
 
   def processForm = Action {   implicit request =>
     MyFormDto.form.bindFromRequest.fold(
       formWithErrors => {
-        BadRequest(views.html.index("Your new application is ready.", SelectOptions, Days, formWithErrors))
+        BadRequest(views.html.index(SelectOptions, Days, formWithErrors))
       },
       myFormDto => {
         Ok(myFormDto.toString)
