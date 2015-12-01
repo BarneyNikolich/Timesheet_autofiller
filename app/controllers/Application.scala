@@ -11,11 +11,11 @@ class Application extends Controller {
   val Days = List("monday", "tuesday", "wednesday", "thursday", "friday").map(d => (d.capitalize, d))
   val SelectOptions = List("-- select --", "Full", "Half", "Off").map( x => (x,x) ).toMap
 
-
+  /**
+   * This method displays the form the user
+   */
   def index = Action {
-
     val myForm = MyFormDto.form //Bring the form into scope!
-
     Ok(views.html.index(SelectOptions, Days, myForm))
   }
 
@@ -25,76 +25,9 @@ class Application extends Controller {
         BadRequest(views.html.index(SelectOptions, Days, formWithErrors))
       },
       myFormDto => {
-        Ok(myFormDto.toString)
-
+        Ok("hmmm"+myFormDto.toString)
       }
     )
   }
-
-
-
-
-
-
-
-
-//  val Hello = Form(
-//    "mon" -> text
-//  )
-//
-//  def Hello = Action { implicit request =>
-//    Hello.bindFromRequest.fold(
-//      errors => {
-//        BadRequest(views.html.index(errors))
-//      },
-//      name => {
-
-//        OK(views.html.sayHello(name))
-//      }
-//    )
-//  }
-
-//  case class TimeData(mon: String, tues: String, wed: String, thur:String, fri: String)
-//
-//  val userFormm: Form[TimeData] = Form(
-//    mapping(
-//      "Mon" -> text,
-//      "Tue" -> text,
-//      "wed" -> text,
-//      "thurs" -> text,
-//      "fri" -> text
-//
-//    )(TimeData.apply)(TimeData.unapply)
-//  )
-//
-//  def form = Action { implicit request =>
-//    userForm.bindFromRequest.fold (
-//      errors => {
-//        BadRequest("fail")
-//      },
-//      userData => {
-//        val input = TimeData()
-//
-//        OK()
-//      }
-//    )
-//  }
-//  userForm.bindFromRequest.fold(
-//    formWithErrors => {
-//      // binding failure, you retrieve the form containing errors:
-//      BadRequest(views.html.sayHello(formWithErrors))
-//    },
-//    userData => {
-//      /* binding success, you get the actual value. */
-//      val newUser = models.User(userData.name, userData.age)
-//      val id = models.User.create(newUser)
-//      Redirect(routes.Application.home(id))
-//    }
-//  )
-
-
-
-
-
 
 }
