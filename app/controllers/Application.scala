@@ -25,7 +25,14 @@ class Application extends Controller {
         BadRequest(views.html.index(SelectOptions, Days, formWithErrors))
       },
       myFormDto => {
-        Ok("hmmm"+myFormDto.toString)
+        val formAsList = List (
+          s"Monday: ${myFormDto.monday}",
+          s"Tuesday: ${myFormDto.tuesday}",
+          s"Wednesday: ${myFormDto.wednesday}",
+          s"Thursday: ${myFormDto.thursday}",
+          s"Friday: ${myFormDto.friday}"
+        )
+        Ok(formAsList)
       }
     )
   }

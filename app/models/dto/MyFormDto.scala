@@ -12,9 +12,9 @@ object MyFormDto {
 //      "monday" -> text.verifying("Monday must be a full day", e => e.equals("Full")),
       "monday" -> text.verifying("Please select an option!", i => !i.equals("-- select --")),
       "tuesday" -> text.verifying("Please select an option", i => !i.equals("-- select --")),
-      "wednesday" -> text,
-      "thursday" -> text,
-      "friday" -> text
+      "wednesday" -> text.verifying("Please select an option", i => !i.equals("-- select --")),
+      "thursday" -> text.verifying("Please select an option", i => !i.equals("-- select --")),
+      "friday" -> text.verifying("Please select an option", i => !i.equals("-- select --"))
     )(MyFormDto.apply)(MyFormDto.unapply)
   )
 }
