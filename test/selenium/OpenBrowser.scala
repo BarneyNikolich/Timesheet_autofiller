@@ -21,17 +21,20 @@ class OpenBrowser extends FlatSpec with Matchers with WebBrowser {
   try {
     webDriver.get(host)
     //Fill the form in
-    for(day <- Days) {
+    for(day <- Days)
       webDriver.findElement(By.id(day)).findElements(By.tagName("option")).get(1).click()
-    }
+
     //Submit
     webDriver.findElement(By.className("btn-primary")).click()
+
+
   } catch {
     case e: ConnectException => println(e)
   }
 
 
 
+//Goes
 
 
 
@@ -46,12 +49,11 @@ class OpenBrowser extends FlatSpec with Matchers with WebBrowser {
 
 
 
-
-//  webDriver.get("https://www.google.co.uk")
+//  webDriver.get("https://www.facebook.com")
 //
-//  webDriver.findElement(By.id("lst-ib")).sendKeys("run further")
-//  webDriver.findElement(By.id("lst-ib")).sendKeys(Keys.ENTER)
-//  webDriver.findElement(By.name("Runfurther.com")).click()
+//  webDriver.findElement(By.id("email")).sendKeys("barney_nikolich@hotmail.co.uk")
+//  webDriver.findElement(By.id("pass")).sendKeys("Amber123")
+//  webDriver.findElement(By.name("pass")).sendKeys(Keys.ENTER)
 
 
 
