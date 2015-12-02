@@ -32,7 +32,10 @@ class Application extends Controller {
           s"Thursday: ${myFormDto.thursday}",
           s"Friday: ${myFormDto.friday}"
         )
-        Ok(formAsList)
+//        println()
+        // WRITE TO TXT FILE
+
+        Ok(formAsList.toString)
       }
     )
   }

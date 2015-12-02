@@ -10,10 +10,13 @@ libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
-  specs2 % Test
+  specs2 % Test,
+  "org.seleniumhq.selenium" % "selenium-java" % "2.45.0",
+  "org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.45.0",
+  "org.scalatest" % "scalatest_2.11" % "2.2.4" % "test"
 )
 
-libraryDependencies += "org.seleniumhq.selenium" % "selenium-java" % "2.35.0" % "test"
+
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
