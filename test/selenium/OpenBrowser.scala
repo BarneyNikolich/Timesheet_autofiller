@@ -6,24 +6,24 @@ import org.openqa.selenium.firefox.FirefoxDriver
 import org.scalatest._
 import selenium._
 import org.openqa.selenium._
-import htmlunit._
+
 
 /**
  * Created by barn on 02/12/15.
  */
 class OpenBrowser extends FlatSpec with Matchers with WebBrowser {
 
+  val Days = List("monday", "tuesday", "wednesday", "thursday", "friday")
+
   implicit val webDriver: WebDriver = new FirefoxDriver
   val host = "http://localhost:9000/"
 
   try {
+    webDriver.get(host)
     //Fill the form in
-    webDriver.findElement(By.id("monday")).findElements(By.tagName("option")).get(1).click()
-    webDriver.findElement(By.id("tuesday")).findElements(By.tagName("option")).get(3).click()
-    webDriver.findElement(By.id("wednesday")).findElements(By.tagName("option")).get(1).click()
-    webDriver.findElement(By.id("thursday")).findElements(By.tagName("option")).get(1).click()
-    webDriver.findElement(By.id("friday")).findElements(By.tagName("option")).get(1).click()
-
+    for(day <- Days) {
+      webDriver.findElement(By.id(day)).findElements(By.tagName("option")).get(1).click()
+    }
     //Submit
     webDriver.findElement(By.className("btn-primary")).click()
   } catch {
@@ -46,7 +46,7 @@ class OpenBrowser extends FlatSpec with Matchers with WebBrowser {
 
 
 
-  
+
 //  webDriver.get("https://www.google.co.uk")
 //
 //  webDriver.findElement(By.id("lst-ib")).sendKeys("run further")
