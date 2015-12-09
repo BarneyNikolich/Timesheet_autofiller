@@ -3,10 +3,24 @@
 
 @main("Auto timesheet filler") {
 
+<script>
+        var user = prompt("What would you like your user name to be");
+    </script>
 
-  <table width="1000" border="1" cellspacd Ding="0" cellpadding='1' align="center">
+
+
+
+  <table class="table table-striped" width="1000" border="1" cellspacd Ding="0" cellpadding='1' align="center" >
     <thead>
-    <td colspan="5" align="center" height="20">Week Ending: 26/11/2015</td>
+    <td colspan="5" align="center" height="20">
+        @form(action = controllers.routes.Application.processForm()) {
+        @helper.inputDate(
+        myForm("date"),
+        '_label -> "Enter the ending day of the week you wish to submit."
+        )
+
+
+    </td>
     <tr height="30">
         @for(day <- days){
             <th>@day._1</th>
@@ -15,7 +29,7 @@
     </thead>
 
     <tbody>
-    @form(action = controllers.routes.Application.processForm()) {
+
         <tr height="50" align="center">
             @for(day <- days){
                 <td>

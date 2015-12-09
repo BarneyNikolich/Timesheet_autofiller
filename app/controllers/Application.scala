@@ -26,6 +26,7 @@ class Application extends Controller {
       },
       myFormDto => {
         val formAsList = List (
+          s"Date: ${myFormDto.date}",
           s"Monday: ${myFormDto.monday}",
           s"Tuesday: ${myFormDto.tuesday}",
           s"Wednesday: ${myFormDto.wednesday}",
